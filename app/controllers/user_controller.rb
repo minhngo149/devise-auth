@@ -5,6 +5,9 @@ class UserController < ApplicationController
 
 		# conditions from body request
 		@users = User.where("nickname like ?", "%#{params[:keyword]}%").all
+
+		# @users = User.where("current_coin > ?", params[:point].to_i).all
+		# @users = User.where("current_coin = ?", params[:point].to_i).all
 		render json: {status: 200, message: "Success data!", data: @users}
 	end
 end
