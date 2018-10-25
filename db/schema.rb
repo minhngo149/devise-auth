@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_090901) do
+ActiveRecord::Schema.define(version: 2018_10_25_014448) do
 
   create_table "administrative_user_roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "role_id"
@@ -385,6 +385,7 @@ ActiveRecord::Schema.define(version: 2018_10_24_090901) do
     t.string "provider"
     t.integer "uid"
     t.string "tokens"
+    t.datetime "created_at"
   end
 
   add_foreign_key "administrative_user_roles", "administrative_users"
