@@ -11,4 +11,23 @@ class UserController < ApplicationController
 		# @users = User.where("gender = ?", params[:gender].to_i).all
 		render json: {status: 200, message: "Success data!", data: @users}
 	end
+
+	# add user api
+	def add_new_user
+		
+		@user = User.new(user_params)
+
+		# xu li them data de luu xuong db user
+		if @user.save
+			render json: {status: 200, message: "Success!", data: @user}
+		else
+			render json: {status: 400, message: "Error!", data: @user.errors.full_messages}
+		end
+	end
+
+
+	private
+		def user_params
+			params.require(:user).permit(:nickname, :mail_address, :password, :password_confirmation, :uid)
+		end
 end
